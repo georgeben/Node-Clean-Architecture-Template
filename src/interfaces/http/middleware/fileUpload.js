@@ -3,8 +3,10 @@
  * @description Parses a multipart form and uploads the specified files to disk
  */
 import multer from "multer";
-import { MAX_UPLOAD_SIZE, ONE_MB } from "helpers/constants";
+import { MAX_FILE_UPLOAD_SIZE } from "helpers/constants";
 import InvalidPayloadError from "../errors/InvalidPayloadError";
+
+const ONE_MB = 1000000;
 
 const diskStorage = multer.diskStorage({
   destination: "temp/uploads",
@@ -87,7 +89,7 @@ const uploader = ({ fileType, fieldName, fields }) => function (req, res, next) 
     storage: diskStorage,
     fileFilter: fileFilter(fileType),
     limits: {
-      fileSize: fileType === "video" ? null : MAX_UPLOAD_SIZE,
+      fileSize: fileType === "video" ? null : MAX_FILE_UPLOAD_SIZE,
     },
   });
   const uploadMiddleware = fields && fields.length
@@ -98,10 +100,11 @@ const uploader = ({ fileType, fieldName, fields }) => function (req, res, next) 
       const message = `Upload error: ${error.message}.`;
       switch (error.code) {
         case "LIMIT_FILE_SIZE": {
-          const uploadLimitInMB = (MAX_UPLOAD_SIZE / ONE_MB).toFixed(2);
+          const uploadLimitInMB = (MAX_FILE_UPLOAD_SIZE / ONE_MB).toFixed(2);
           return next(
             new InvalidPayloadError(
-              `${message} Only files smaller than ${MAX_UPLOAD_SIZE} bytes (${uploadLimitInMB}MB) are allowed`,
+              `${message} Only files smaller than ${MAX_FILE_UPLOAD_SIZE} bytes`
+              + ` (${uploadLimitInMB}MB) are allowed`,
             ),
           );
         }
