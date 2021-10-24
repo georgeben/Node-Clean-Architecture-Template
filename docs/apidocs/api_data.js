@@ -1,0 +1,106 @@
+define({ "api": [
+  {
+    "type": "post",
+    "url": "/auth/login",
+    "title": "Login",
+    "group": "Auth",
+    "name": "Login",
+    "description": "<p>Authenticate a user using email and password</p>",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<ul> <li>User's email</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<ul> <li>User's password (min 8 characters)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response:",
+          "content": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Sign up successful!\",\n    \"data\": {\n    },\n   \"links\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/interfaces/http/routes/v1/auth.js",
+    "groupTitle": "Auth",
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:30123/v1/auth/login"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/auth/signup",
+    "title": "Creates account for user",
+    "group": "Auth",
+    "name": "Signup",
+    "description": "<p>Sign up with email and password</p>",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<ul> <li>User's email</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<ul> <li>User's password (min 8 characters)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "first_name",
+            "description": "<ul> <li>User's first name</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "last_name",
+            "description": "<ul> <li>User's last name</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response:",
+          "content": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Sign up successful!\",\n    \"data\": {\n        \"first_name\": \"George\",\n        \"last_name\": \"Bush\",\n        \"email\": \"hey@gmail.com\",\n        \"username\": \"george3500\",\n        \"email_verified\": false,\n        \"_id\": \"6175ce167438dd9854ca2850\",\n        \"created_at\": \"2021-10-24T21:20:22.502Z\",\n        \"updated_at\": \"2021-10-24T21:20:22.502Z\"\n    },\n   \"links\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/interfaces/http/routes/v1/auth.js",
+    "groupTitle": "Auth",
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:30123/v1/auth/signup"
+      }
+    ]
+  }
+] });
