@@ -1,4 +1,6 @@
 # Node Clean Architecture Template
+
+[![Pull Request Check CI](https://github.com/georgeben/Node-Clean-Architecture-Template/actions/workflows/ci.yml/badge.svg)](https://github.com/georgeben/Node-Clean-Architecture-Template/actions/workflows/ci.yml) \
 A simple starter template for NodeJS apps using clean architecture 
 
 ## About Clean Architecture
