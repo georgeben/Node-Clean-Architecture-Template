@@ -1,11 +1,11 @@
-import { Router } from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import { Router } from "express";
 import helmet from "helmet";
-import morgan from "morgan";
 import errorHandler from "interfaces/http/middleware/errorHandler";
-import v1Routes from "./v1";
+import morgan from "morgan";
 import error404 from "../middleware/notFoundHandler";
+import v1Routes from "./v1";
 
 /**
  * Configures express middlewares
@@ -36,7 +36,7 @@ export default ({ config, containerMiddleware }) => {
           if (origins.indexOf(origin) !== -1 || !origin) {
             cb(null, true);
           } else {
-            cb(new Error(`Origin('${origin}') not allowed`, false));
+            cb(new Error(`Origin('${origin}') not allowed`), false);
           }
         }
       },

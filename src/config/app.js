@@ -73,7 +73,7 @@ const config = {
     env: "JWT_AUDIENCE",
     sensitive: false,
   },
-  frontendBasUrl: {
+  frontendBaseUrl: {
     doc: "Frontend base url",
     format: "*",
     default: "http://letscollabo.live/",
