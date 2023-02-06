@@ -1,13 +1,13 @@
 import { expect } from "chai";
 import User from "../User";
 
-describe("********** Movie entity ***********", () => {
+describe("********** User entity ***********", () => {
   it("getPublicFields", () => {
     const user = new User({
       first_name: "Peter",
       last_name: "Griffin",
       email: "peter@giffin.com",
-      password: "hhheheheheheehehehehhe123",
+      password: "Griffin'sPassword",
       confirm_email_token: "secret",
     });
 
@@ -16,11 +16,20 @@ describe("********** Movie entity ***********", () => {
     expect(publicFields).to.not.have.property("password");
   });
 
-  it("generateUsername", async () => {
+  it("generateUsername if unique", async () => {
     User.countDocuments = async () => 0;
     const name = "george";
     const username = await User.generateUsername(name);
     expect(username).to.be.a("string");
     expect(username).to.equal(name);
+  });
+
+  it("generateUsername if not unique", async () => {
+    User.countDocuments = async ({ username }) => username === "peter";
+    const name = "peter";
+    const username = await User.generateUsername(name);
+    expect(username).to.be.a("string");
+    expect(username).to.not.equal(name);
+    expect(username).to.contain.oneOf([name]);
   });
 });

@@ -19,6 +19,11 @@ class User {
   }
 
   // generateUsername will now exist on the mongodb User model as a static method
+  /**
+   *
+   * @param {String} name
+   * @returns {String} username
+   */
   static async generateUsername(name) {
     const count = await this.countDocuments({ username: name });
     if (!count) {

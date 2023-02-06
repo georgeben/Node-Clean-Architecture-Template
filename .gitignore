@@ -10,7 +10,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -145,6 +146,7 @@ dist
 .vscode-test
 
 # yarn v2
+yarn.lock
 .yarn/cache
 .yarn/unplugged
 .yarn/build-state.yml
@@ -175,3 +177,4 @@ dist
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
+.prettierrc

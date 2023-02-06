@@ -14,7 +14,7 @@ To learn more about clean architecture, please read this article https://blog.cl
 - API Documentation using https://apidocjs.com/
 - MongoDB setup
 - Testing setup
-- Continous Integration Github action
+- Continuous Integration Github action
 - Configured Express server
 - Compliance with [12 factor app](https://12factor.net/)
 - Process manager
@@ -31,7 +31,7 @@ To learn more about clean architecture, please read this article https://blog.cl
 Visit [http://localhost:30123/rest-docs](http://localhost:30123/rest-docs) for API documentation
 
 ## Project structure
-- **app**: App contains the use cases of the system. A use case can contain business logic for accomplishig a specific goal. Similar usecases can be grouped together in directories e.g RegisterUser, VerifyUser can be grouped under "users".\
+- **app**: App contains the use cases of the system. A use case can contain business logic for accomplishing a specific goal. Similar usecases can be grouped together in directories e.g RegisterUser, VerifyUser can be grouped under "users".\
 :warning:  NOTE: use-cases should NEVER communicate with any external service such as a database directly. Instead, they should call an interface.
 
 - **config**: Environment specific configurations for the application e.g Database connection options, payment providers, etc. All files created in `config` directory are automatically loaded and exported to 
@@ -79,7 +79,7 @@ An entity can be an object with methods, or it can be a set of data structures a
 
 
 - **infra**: All external entities in your app go in here. For example your database, cache, logger, object storage, messaging, payment gateway.
-  - **repositories**: Repositories implement logic for retrieving and aggregating data from databses. All repositories inherit common methodds from the `BaseRepository` class. So you don't have to keep writing similar queries multiple times.
+  - **repositories**: Repositories implement logic for retrieving and aggregating data from databases. All repositories inherit common methods from the `BaseRepository` class. So you don't have to keep writing similar queries multiple times.
   
  **interfaces**: Interfaces are delivery mechanisms for your app i.e how users access your app. For example, through a REST API, gRPC server, GraphQL. In this example, we are delivering our application using Express web framework for Nodejs.
  
